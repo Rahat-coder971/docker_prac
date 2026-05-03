@@ -1,5 +1,5 @@
 # to import base img
-FROM node:18
+FROM node:18-alpine
 
 #creating working dir
 WORKDIR /app
