@@ -1,7 +1,7 @@
 const http = require("http");
 
 const server = http.createServer((req, res) => {
-  res.write("Hello from Docker 🚀");
+  res.write(`server is running on port 3000`);
   res.end();
 });
 
