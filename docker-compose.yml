@@ -5,7 +5,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image : rahathusain22/img:v1
+    image : rahathusain22/img:v2
     container_name: backend
     ports:
       - "3000:3000"
