@@ -1,0 +1,38 @@
+pipeline{
+    agent any;
+   
+    stages{
+    stage("pull code"){
+            steps{
+                git url: "https://github.com/Rahat-coder971/docker_prac/",
+          branch: "master"
+      }
+    }
+    stage("login to docker hub"){
+            steps{
+        withCredentials([usernamePassword(
+          credentialsId: 'dockerHubId',
+          usernameVariable: "username",
+          passwordVariable: "userpass"
+        )]){
+                        bat 'docker login -u %username% -p %userpass% '
+
+        }
+      }
+    }
+    stage("build img and push to docker hub"){
+            steps{
+                bat 'docker build -t rahathusain22/img:v2 .'
+                bat 'docker push rahathusain22/img:v2 '
+      }
+
+    }
+    stage("take lastest img from docker hub"){
+            steps{
+                bat "docker compose  -f docker-compose.yml down"
+                 bat "docker compose  -f docker-compose.yml pull"
+                  bat "docker compose  -f docker-compose.yml up -d"
+      }
+    }
+  }
+}
