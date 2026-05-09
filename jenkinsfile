@@ -30,8 +30,10 @@ pipeline{
     stage("take lastest img from docker hub"){
             steps{
                 bat "docker compose  -f docker-compose.yml down"
+                bat "docker system prune -a" 
                  bat "docker compose  -f docker-compose.yml pull"
                   bat "docker compose  -f docker-compose.yml up -d"
+                 
       }
     }
   }
