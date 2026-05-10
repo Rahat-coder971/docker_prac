@@ -1,7 +1,7 @@
 const http = require("http");
 
 const server = http.createServer((req, res) => {
-  res.write(`THIS IS NEW RESPOSNE UPDATED ONE###$$#$#%$`);
+  res.write(`THIS IS NEW RESPOSNE UPDATED ONE###$$#$#%$ and port is 3000`);
   res.end();
 });
 
